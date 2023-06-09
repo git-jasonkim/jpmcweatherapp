@@ -15,9 +15,16 @@ struct WeatherAPI: WeatherAPIImpl {
         self.api = api
     }
     
-    func getWeather(for location: String) async -> Result<WeatherModel, NetworkingManager.NetworkingError> {
+    func getWeather(for location: String, isZip: Bool) async -> Result<WeatherModel, NetworkingManager.NetworkingError> {
         do {
-            let response = try await api.request(.getWeatherByCity(name: location), type: WeatherResponse.self)
+            let response: WeatherResponse
+            
+            if isZip {
+                response = try await api.request(.getWeatherByZip(code: location), type: WeatherResponse.self)
+            } else {
+                response = try await api.request(.getWeatherByCity(name: location), type: WeatherResponse.self)
+            }
+            
             return .success(response.convertToWeatherModel())
         } catch {
             return .failure(error as? NetworkingManager.NetworkingError ?? .custom(error: error))

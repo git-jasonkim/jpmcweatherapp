@@ -14,10 +14,10 @@ final class WeatherAPIMock: WeatherAPIImpl {
     var getWeatherByCoordinateCounter = 0
     var getWeatherIconCounter = 0
     
-    func getWeather(for location: String) async -> Result<JPMCWeatherApp.WeatherModel, JPMCWeatherApp.NetworkingManager.NetworkingError> {
+    func getWeather(for location: String, isZip: Bool) async -> Result<JPMCWeatherApp.WeatherModel, JPMCWeatherApp.NetworkingManager.NetworkingError> {
         getWeatherByCityCounter += 1
         guard
-            let url = Bundle.main.url(forResource: "SampleWeatherDataAtlanta", withExtension: "json"),
+            let url = Bundle.main.url(forResource: isZip ? "SampleWeatherDataZip" : "SampleWeatherDataAtlanta", withExtension: "json"),
             let data = try? Data(contentsOf: url)
         else {
             return .failure(.invalidData)

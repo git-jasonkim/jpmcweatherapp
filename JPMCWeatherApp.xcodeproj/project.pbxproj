@@ -32,7 +32,7 @@
 		E0A5A2852A318BF600D03A7F /* SampleWeatherDataLatLon.json in Resources */ = {isa = PBXBuildFile; fileRef = E0A5A2842A318BE900D03A7F /* SampleWeatherDataLatLon.json */; };
 		E0A5A2872A318C8700D03A7F /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A5A2862A318C8700D03A7F /* WeatherAPI.swift */; };
 		E0A5A28B2A319D4200D03A7F /* SampleWeatherDataAtlanta.json in Resources */ = {isa = PBXBuildFile; fileRef = E0A5A28A2A319D4200D03A7F /* SampleWeatherDataAtlanta.json */; };
-		E0A5A28D2A319D6000D03A7F /* SampleWeatherDataLosAngeles.json in Resources */ = {isa = PBXBuildFile; fileRef = E0A5A28C2A319D5F00D03A7F /* SampleWeatherDataLosAngeles.json */; };
+		E0A5A28D2A319D6000D03A7F /* SampleWeatherDataZip.json in Resources */ = {isa = PBXBuildFile; fileRef = E0A5A28C2A319D5F00D03A7F /* SampleWeatherDataZip.json */; };
 		E0A5A2922A31A4A600D03A7F /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A5A2912A31A4A600D03A7F /* ImageCache.swift */; };
 		E0A5A2942A31A4B000D03A7F /* ImageRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A5A2932A31A4B000D03A7F /* ImageRetriever.swift */; };
 		E0A5A2982A31BE8400D03A7F /* WeatherController+CV.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A5A2972A31BE8400D03A7F /* WeatherController+CV.swift */; };
@@ -84,7 +84,7 @@
 		E0A5A2842A318BE900D03A7F /* SampleWeatherDataLatLon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleWeatherDataLatLon.json; sourceTree = "<group>"; };
 		E0A5A2862A318C8700D03A7F /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		E0A5A28A2A319D4200D03A7F /* SampleWeatherDataAtlanta.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleWeatherDataAtlanta.json; sourceTree = "<group>"; };
-		E0A5A28C2A319D5F00D03A7F /* SampleWeatherDataLosAngeles.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleWeatherDataLosAngeles.json; sourceTree = "<group>"; };
+		E0A5A28C2A319D5F00D03A7F /* SampleWeatherDataZip.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SampleWeatherDataZip.json; sourceTree = "<group>"; };
 		E0A5A2912A31A4A600D03A7F /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		E0A5A2932A31A4B000D03A7F /* ImageRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRetriever.swift; sourceTree = "<group>"; };
 		E0A5A2972A31BE8400D03A7F /* WeatherController+CV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherController+CV.swift"; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 			children = (
 				E0A5A2842A318BE900D03A7F /* SampleWeatherDataLatLon.json */,
 				E0A5A28A2A319D4200D03A7F /* SampleWeatherDataAtlanta.json */,
-				E0A5A28C2A319D5F00D03A7F /* SampleWeatherDataLosAngeles.json */,
+				E0A5A28C2A319D5F00D03A7F /* SampleWeatherDataZip.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -400,7 +400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0A5A28D2A319D6000D03A7F /* SampleWeatherDataLosAngeles.json in Resources */,
+				E0A5A28D2A319D6000D03A7F /* SampleWeatherDataZip.json in Resources */,
 				E0A5A28B2A319D4200D03A7F /* SampleWeatherDataAtlanta.json in Resources */,
 				E0A5A2612A31057000D03A7F /* LaunchScreen.storyboard in Resources */,
 				E0A5A2852A318BF600D03A7F /* SampleWeatherDataLatLon.json in Resources */,
@@ -484,7 +484,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PFVS2N86DB;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasonkim.JPMCWeatherAppTests;
@@ -502,7 +502,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PFVS2N86DB;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasonkim.JPMCWeatherAppTests;

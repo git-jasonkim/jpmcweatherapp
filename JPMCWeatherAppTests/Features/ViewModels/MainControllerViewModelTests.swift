@@ -24,9 +24,35 @@ final class MainControllerViewModelTests: XCTestCase {
         vm = nil
     }
     
+    func testSearchWeatherByZipSuccess() async {
+        let api = vm.api as! WeatherAPIMock
+        let expectation = XCTestExpectation(description: "Search Weather By Zip")
+        
+        var weatherData: WeatherModel?
+        
+        vm.handleState = { state in
+            if case MainControllerViewModel.State.success(let result) = state {
+                weatherData = result
+                expectation.fulfill()
+            }
+        }
+        
+        await vm.searchWeather(for: "90001")
+        await fulfillment(of: [expectation], timeout: 1.0)
+        
+        XCTAssertEqual(api.getWeatherByCityCounter, 1, "getWeatherByCity shall only be called once")
+        guard let weatherData = weatherData else { return }
+        XCTAssertEqual(UserDefaults.standard.string(forKey: UserDefaults.Key.lastSearchedLocation), "Los Angeles")
+        XCTAssertEqual(weatherData.name, "Los Angeles")
+        XCTAssertEqual(weatherData.id, 0)
+        XCTAssertEqual(weatherData.coord.lat, 33.9731)
+        XCTAssertEqual(weatherData.coord.lon, -118.2479)
+        //TODO: Expand to verify all properties
+    }
+    
     func testSearchWeatherByLocationSuccess() async {
         let api = vm.api as! WeatherAPIMock
-        let expectation = XCTestExpectation(description: "Search Weather By Location")
+        let expectation = XCTestExpectation(description: "Search Weather By City")
         
         var weatherData: WeatherModel?
         

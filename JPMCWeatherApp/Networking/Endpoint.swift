@@ -10,6 +10,7 @@ import CoreLocation
 
 enum Endpoint {
     case getWeatherByCity(name: String)
+    case getWeatherByZip(code: String)
     case getWeatherByCoordinate(coordinate: CLLocationCoordinate2D)
     case getWeatherIcon(code: String)
 }
@@ -28,14 +29,13 @@ extension Endpoint {
     
     var host: String {
         switch self {
-        case .getWeatherByCity, .getWeatherByCoordinate:
+        case .getWeatherByCity, .getWeatherByZip, .getWeatherByCoordinate:
             return apiHost
         case .getWeatherIcon:
             return iconHost
         }
     }
     
-
     var version: String {
         switch self {
         default:
@@ -45,7 +45,7 @@ extension Endpoint {
     
     var path: String {
         switch self {
-        case .getWeatherByCity, .getWeatherByCoordinate:
+        case .getWeatherByCity, .getWeatherByZip, .getWeatherByCoordinate:
             return "/data/\(version)/weather"
         case .getWeatherIcon(let code):
             return "/img/wn/\(code)@2x.png"
@@ -54,7 +54,7 @@ extension Endpoint {
     
     var methodType: MethodType {
         switch self {
-        case .getWeatherByCity, .getWeatherByCoordinate, .getWeatherIcon:
+        case .getWeatherByCity, .getWeatherByZip, .getWeatherByCoordinate, .getWeatherIcon:
             return .GET
         }
     }
@@ -62,9 +62,11 @@ extension Endpoint {
     var queryItems: [String: String]? {
         switch self {
         case .getWeatherByCity(let name):
-            return ["q": name, "units": "imperial"]
+            return ["q": name]
+        case .getWeatherByZip(let code):
+            return ["zip": code]
         case .getWeatherByCoordinate(let coordinate):
-            return ["lat": coordinate.latitude.description, "lon": coordinate.longitude.description, "units": "imperial"]
+            return ["lat": coordinate.latitude.description, "lon": coordinate.longitude.description]
         default:
             return nil
         }
@@ -80,7 +82,8 @@ extension Endpoint {
         
         var requestQueryItems = [URLQueryItem]()
         requestQueryItems.append(URLQueryItem(name: "appid", value: apiKey))
-                                 
+        requestQueryItems.append(URLQueryItem(name: "units", value: "imperial"))
+
         if let queryItems = queryItems {
             queryItems.forEach { item in
                 requestQueryItems.append(URLQueryItem(name: item.key, value: item.value))

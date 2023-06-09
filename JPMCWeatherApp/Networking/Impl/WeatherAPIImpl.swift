@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 
 protocol WeatherAPIImpl {
-    func getWeather(for location: String) async -> Result<WeatherModel, NetworkingManager.NetworkingError>
+    func getWeather(for location: String, isZip: Bool) async -> Result<WeatherModel, NetworkingManager.NetworkingError>
     func getWeather(for coordinate: CLLocationCoordinate2D) async -> Result<WeatherModel, NetworkingManager.NetworkingError>
 
 }

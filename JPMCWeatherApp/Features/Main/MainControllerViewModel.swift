@@ -29,8 +29,17 @@ class MainControllerViewModel {
     
     @MainActor
     func searchWeather(for location: String) async {
+        
+        let izZip = {
+            if let _ = Int(location) {
+                return true
+            } else {
+                return false
+            }
+        }() //TODO: use regex for valid zip codes
+        
         state = .loading
-        let result = await api.getWeather(for: location)
+        let result = await api.getWeather(for: location, isZip: izZip)
         switch result {
         case .failure(let error):
             state = .failure(error: error.localizedDescription)
